@@ -1,0 +1,35 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "User profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      },
+      "required": ["uid", "email"]
+    },
+    "analysis": {
+      "title": "Analysis",
+      "description": "Resume analysis",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "score": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "score", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "user",
+      "description": "User profiles"
+    },
+    "users/{userId}/analyses/{analysisId}": {
+      "schema": "analysis",
+      "description": "Resume analysis history"
+    }
+  }
+}
